@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/lukev/Downloads/Heart-Disease-MLOps/mlruns/646560518022963354/ba5ede6b68c34a179bba89ee98de056f/artifacts
+end_time: 1780343643978
+entry_point_name: ''
+experiment_id: '646560518022963354'
+lifecycle_stage: active
+run_id: ba5ede6b68c34a179bba89ee98de056f
+run_name: abrasive-eel-419
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1780343632427
+status: 3
+tags: []
+user_id: lukev

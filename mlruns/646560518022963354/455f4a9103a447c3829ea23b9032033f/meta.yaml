@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/lukev/Downloads/Heart-Disease-MLOps/mlruns/646560518022963354/455f4a9103a447c3829ea23b9032033f/artifacts
+end_time: 1780343622343
+entry_point_name: ''
+experiment_id: '646560518022963354'
+lifecycle_stage: active
+run_id: 455f4a9103a447c3829ea23b9032033f
+run_name: likeable-foal-722
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1780343613164
+status: 3
+tags: []
+user_id: lukev

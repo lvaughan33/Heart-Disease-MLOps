@@ -1,0 +1,9 @@
+artifact_location: file:///C:/Users/lukev/Downloads/Heart-Disease-MLOps/mlruns/646560518022963354
+creation_time: 1780343589313
+effective_trace_archival_retention: null
+experiment_id: '646560518022963354'
+last_update_time: 1780343589313
+lifecycle_stage: active
+name: heart-disease-experiment
+trace_location: null
+workspace: default

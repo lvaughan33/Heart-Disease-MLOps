@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/lukev/Downloads/Heart-Disease-MLOps/mlruns/646560518022963354/f4446aebe5ea4dd98584d860d5090039/artifacts
+end_time: 1780343603358
+entry_point_name: ''
+experiment_id: '646560518022963354'
+lifecycle_stage: active
+run_id: f4446aebe5ea4dd98584d860d5090039
+run_name: indecisive-rat-399
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1780343589810
+status: 3
+tags: []
+user_id: lukev
