@@ -1,5 +1,11 @@
 # Model Monitoring Report (Evidently Drift Detection)
 
+## Overview
+
+This project uses Evidently to monitor data drift between the training dataset (reference) and simulated production data. The goal is to detect whether changes in input feature distributions could impact model performance after deployment.
+
+The reference dataset is derived from the training split (`data/X_train.csv`), while the production dataset is simulated by applying controlled perturbations to mimic real-world data changes over time.
+
 ## 1. Features that showed drift
 
 Based on the Evidently Data Drift report, the following features showed noticeable drift:
