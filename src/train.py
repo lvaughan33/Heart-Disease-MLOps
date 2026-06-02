@@ -81,7 +81,7 @@ def main():
             print(f"Run {i+1} complete | accuracy={acc:.4f}")
 
     # -----------------------------
-    # CI/CD GATE
+    # CI/CD gate
     # -----------------------------
     MIN_ACCURACY = 0.80
 
