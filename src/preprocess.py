@@ -1,7 +1,6 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-
 # ----------------------------
 # Input validation
 # ----------------------------
@@ -9,13 +8,11 @@ def validate_input(df: pd.DataFrame):
     if not isinstance(df, pd.DataFrame):
         raise TypeError("Input must be a pandas DataFrame")
 
-
 # ----------------------------
 # Load data
 # ----------------------------
 def load_data(path: str) -> pd.DataFrame:
     return pd.read_csv(path)
-
 
 # ----------------------------
 # Clean missing values
@@ -33,7 +30,6 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
 
     return df
 
-
 # ----------------------------
 # Encode categoricals
 # ----------------------------
@@ -42,7 +38,6 @@ def encode_categoricals(df: pd.DataFrame) -> pd.DataFrame:
 
     df = df.copy()
     return pd.get_dummies(df)
-
 
 # ----------------------------
 # Split data
@@ -66,7 +61,6 @@ def split_data(df: pd.DataFrame, target_col: str = "target"):
 
     return X_train, X_test, y_train, y_test
 
-
 # ----------------------------
 # Pipeline entrypoint
 # ----------------------------
@@ -86,7 +80,6 @@ def main():
     y_test.to_csv("data/y_test.csv", index=False)
 
     print("Preprocessing complete.")
-
 
 if __name__ == "__main__":
     main()
