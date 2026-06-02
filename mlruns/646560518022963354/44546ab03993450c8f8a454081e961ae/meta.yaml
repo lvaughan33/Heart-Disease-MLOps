@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/lukev/Downloads/Heart-Disease-MLOps/mlruns/646560518022963354/44546ab03993450c8f8a454081e961ae/artifacts
+end_time: 1780406319296
+entry_point_name: ''
+experiment_id: '646560518022963354'
+lifecycle_stage: active
+run_id: 44546ab03993450c8f8a454081e961ae
+run_name: wistful-worm-119
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1780406309300
+status: 3
+tags: []
+user_id: lukev

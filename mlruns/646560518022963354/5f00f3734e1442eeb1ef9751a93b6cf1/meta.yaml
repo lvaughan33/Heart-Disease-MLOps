@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/lukev/Downloads/Heart-Disease-MLOps/mlruns/646560518022963354/5f00f3734e1442eeb1ef9751a93b6cf1/artifacts
+end_time: 1780406001785
+entry_point_name: ''
+experiment_id: '646560518022963354'
+lifecycle_stage: active
+run_id: 5f00f3734e1442eeb1ef9751a93b6cf1
+run_name: adorable-snake-328
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1780405990114
+status: 3
+tags: []
+user_id: lukev

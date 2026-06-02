@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/lukev/Downloads/Heart-Disease-MLOps/mlruns/646560518022963354/af80d273dad840fcaf4767a31f37a8a6/artifacts
+end_time: 1780405990074
+entry_point_name: ''
+experiment_id: '646560518022963354'
+lifecycle_stage: active
+run_id: af80d273dad840fcaf4767a31f37a8a6
+run_name: stately-kite-247
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1780405971106
+status: 3
+tags: []
+user_id: lukev

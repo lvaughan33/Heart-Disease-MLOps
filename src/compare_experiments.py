@@ -1,6 +1,8 @@
+import os
+os.environ["MLFLOW_ALLOW_FILE_STORE"] = "true"
+
 import mlflow
 import pandas as pd
-
 
 def main():
 
@@ -52,7 +54,6 @@ def main():
     print(runs)
 
     print("\n Best Run ID:", best["run_id"])
-
 
 if __name__ == "__main__":
     main()

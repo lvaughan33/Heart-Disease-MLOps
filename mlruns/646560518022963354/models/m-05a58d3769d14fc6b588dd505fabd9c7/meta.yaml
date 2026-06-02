@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/lukev/Downloads/Heart-Disease-MLOps/mlruns/646560518022963354/models/m-05a58d3769d14fc6b588dd505fabd9c7/artifacts
+creation_timestamp: 1780406025376
+experiment_id: '646560518022963354'
+last_updated_timestamp: 1780406035332
+model_id: m-05a58d3769d14fc6b588dd505fabd9c7
+model_type: null
+name: model
+source_run_id: d23362190559452c923c8c3cc239bead
+status: 2
+status_message: null

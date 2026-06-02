@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/lukev/Downloads/Heart-Disease-MLOps/mlruns/646560518022963354/b0d5f0537abb4678a3e4add985e8b91d/artifacts
+end_time: 1780406023629
+entry_point_name: ''
+experiment_id: '646560518022963354'
+lifecycle_stage: active
+run_id: b0d5f0537abb4678a3e4add985e8b91d
+run_name: charming-fly-223
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1780406012626
+status: 3
+tags: []
+user_id: lukev

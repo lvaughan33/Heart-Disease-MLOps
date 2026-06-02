@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/lukev/Downloads/Heart-Disease-MLOps/mlruns/646560518022963354/13dd6c934ccf4c7c8196983b0545eb70/artifacts
+end_time: 1780406012593
+entry_point_name: ''
+experiment_id: '646560518022963354'
+lifecycle_stage: active
+run_id: 13dd6c934ccf4c7c8196983b0545eb70
+run_name: orderly-vole-372
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1780406001823
+status: 3
+tags: []
+user_id: lukev

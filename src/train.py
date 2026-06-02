@@ -1,3 +1,6 @@
+import os
+os.environ["MLFLOW_ALLOW_FILE_STORE"] = "true"
+
 import mlflow
 import mlflow.sklearn
 import pandas as pd
@@ -15,13 +18,11 @@ def load_data():
     y_test = pd.read_csv("data/y_test.csv").values.ravel()
     return X_train, X_test, y_train, y_test
 
-
 # -----------------------------
 # Main training loop
 # -----------------------------
 def main():
 
-    # IMPORTANT: single tracking backend
     mlflow.set_tracking_uri("file:./mlruns")
     mlflow.set_experiment("heart-disease-experiment")
 
@@ -29,6 +30,8 @@ def main():
 
     n_estimators_list = [50, 100, 200, 300, 400]
     max_depth_list = [3, 5, 7, 10, None]
+
+    best_acc = 0.0   # 👈 ADD THIS
 
     for i in range(5):
 
@@ -50,21 +53,35 @@ def main():
             prec = precision_score(y_test, preds)
             rec = recall_score(y_test, preds)
 
-            # log params
+            best_acc = max(best_acc, acc)   # 👈 ADD THIS
+
             mlflow.log_param("model", "RandomForest")
             mlflow.log_param("n_estimators", n_estimators)
             mlflow.log_param("max_depth", max_depth)
 
-            # log metrics
             mlflow.log_metric("accuracy", acc)
             mlflow.log_metric("precision", prec)
             mlflow.log_metric("recall", rec)
 
-            # log model
             mlflow.sklearn.log_model(model, "model")
 
-            print(f"Run {i+1} complete")
+            print(f"Run {i+1} complete | accuracy={acc:.4f}")
 
+    # -----------------------------
+    # CI/CD GATE
+    # -----------------------------
+    MIN_ACCURACY = 0.80
+
+    print("\n==============================")
+    print(f"Best accuracy: {best_acc:.4f}")
+    print("==============================")
+
+    if best_acc < MIN_ACCURACY:
+        raise SystemExit(
+            f"Model failed CI check: {best_acc:.4f} < {MIN_ACCURACY}"
+        )
+
+    print("Model meets performance threshold ✅")
 
 if __name__ == "__main__":
     main()
