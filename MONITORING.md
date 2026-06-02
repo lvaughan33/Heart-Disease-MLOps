@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project uses Evidently to monitor data drift between the training dataset (reference) and simulated production data. The goal is to detect whether changes in input feature distributions could impact model performance after deployment.
+This project uses Evidently to monitor data drift between the training dataset and simulated production data. The goal is to detect whether changes in input feature distributions could impact model performance after deployment.
 
 The reference dataset is derived from the training split (`data/X_train.csv`), while the production dataset is simulated by applying controlled perturbations to mimic real-world data changes over time.
 
@@ -11,7 +11,7 @@ The reference dataset is derived from the training split (`data/X_train.csv`), w
 Based on the Evidently Data Drift report, the following features showed noticeable drift:
 
 - **age**: Shifted distribution due to simulated demographic variation in the production data.
-- **resting_bp** (resting blood pressure): Increased variance introduced to simulate sensor variability.
+- **resting_bp**: Increased variance introduced to simulate sensor variability.
 - **cholesterol**: Significant drift due to added noise and shifted mean values.
 - **max_heart_rate**: Moderate drift caused by scaling adjustments in the production dataset.
 
@@ -30,8 +30,6 @@ The detected drift may impact model performance in the following ways:
 - Features like **cholesterol** and **resting_bp** are strong predictors in cardiovascular risk models, so drift here can directly affect classification accuracy.
 - Moderate drift in **max_heart_rate** may slightly shift decision boundaries.
 - If drift continues to increase over time, model calibration may degrade, leading to reduced precision and recall.
-
-However, since not all features drifted heavily, the model is expected to remain partially robust in the short term.
 
 ## 3. Recommended action
 
