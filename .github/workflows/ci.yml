@@ -25,13 +25,14 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run pytest
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: |
-          pytest tests -v
-
+          python -m pytest tests -v
 
   train:
     runs-on: ubuntu-latest
-    needs: test   # IMPORTANT: only runs if tests pass
+    needs: test   # only runs if tests pass
 
     steps:
       - name: Checkout repo
