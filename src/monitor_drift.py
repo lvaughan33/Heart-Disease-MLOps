@@ -83,10 +83,10 @@ def main():
         sys.exit(1)
 
     if drift_score > DRIFT_THRESHOLD:
-        print("❌ Drift threshold exceeded")
+        print("Drift threshold exceeded")
         sys.exit(1)
 
-    print("✅ Drift within threshold")
+    print("Drift within threshold")
     sys.exit(0)
 
 if __name__ == "__main__":
