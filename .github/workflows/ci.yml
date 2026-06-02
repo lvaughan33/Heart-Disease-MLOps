@@ -30,7 +30,6 @@ jobs:
         run: |
           python -m pytest tests -v
 
-
   train:
     runs-on: ubuntu-latest
     needs: test   # only runs if tests pass
@@ -52,7 +51,6 @@ jobs:
       - name: Run training
         run: |
           python src/train.py
-
 
   drift:
     runs-on: ubuntu-latest
