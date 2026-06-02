@@ -8,7 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score
 
 # -------------------------------------------------
-# MLflow safety config (CRITICAL FIX)
+# MLflow safety config
 # -------------------------------------------------
 def setup_mlflow():
     """
@@ -23,7 +23,6 @@ def setup_mlflow():
     mlflow.set_tracking_uri(tracking_uri)
     mlflow.set_experiment("heart-disease-experiment")
 
-
 # -------------------------------------------------
 # Load data
 # -------------------------------------------------
@@ -33,7 +32,6 @@ def load_data():
     y_train = pd.read_csv("data/y_train.csv").values.ravel()
     y_test = pd.read_csv("data/y_test.csv").values.ravel()
     return X_train, X_test, y_train, y_test
-
 
 # -------------------------------------------------
 # Main training loop
@@ -96,8 +94,7 @@ def main():
             f"Model failed CI check: {best_acc:.4f} < {MIN_ACCURACY}"
         )
 
-    print("Model meets performance threshold ✅")
-
+    print("Model meets performance threshold")
 
 if __name__ == "__main__":
     main()
