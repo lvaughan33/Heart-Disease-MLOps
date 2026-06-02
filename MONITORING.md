@@ -17,8 +17,6 @@ The drift was intentionally introduced to simulate real-world conditions such as
 - Differences in data collection environments
 - Sensor or preprocessing inconsistencies
 
----
-
 ## 2. Potential impact on model performance
 
 The detected drift may impact model performance in the following ways:
@@ -29,13 +27,11 @@ The detected drift may impact model performance in the following ways:
 
 However, since not all features drifted heavily, the model is expected to remain partially robust in the short term.
 
----
-
 ## 3. Recommended action
 
 Based on the observed drift level:
 
-### Recommended action: **Continue monitoring + prepare for retraining**
+### Recommended action: **continue monitoring + prepare for retraining**
 
 - Drift is present but not catastrophic.
 - Immediate retraining is not strictly required unless performance degradation is observed in production.
@@ -45,8 +41,6 @@ Based on the observed drift level:
 - Schedule periodic retraining if drift persists across multiple time windows.
 - Add automated alerts when drift exceeds a threshold.
 - Investigate upstream data collection processes for cholesterol and blood pressure measurements.
-
----
 
 ## Conclusion
 
