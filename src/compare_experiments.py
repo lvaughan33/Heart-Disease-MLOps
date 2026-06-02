@@ -6,7 +6,6 @@ import pandas as pd
 
 def main():
 
-    # MUST match training backend
     mlflow.set_tracking_uri("file:./mlruns")
 
     experiment_name = "heart-disease-experiment"
@@ -23,7 +22,6 @@ def main():
         print("No runs found. Did you run training yet?")
         return
 
-    # Keep only useful columns (safe filtering)
     cols = [
         "run_id",
         "metrics.accuracy",
@@ -36,7 +34,6 @@ def main():
     cols = [c for c in cols if c in runs.columns]
     runs = runs[cols]
 
-    # Sort by accuracy
     if "metrics.accuracy" not in runs.columns:
         print("No accuracy metric found.")
         return
