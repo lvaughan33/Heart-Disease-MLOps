@@ -4,9 +4,7 @@ import pytest
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 
-
 DATA_PATH = "data/raw/heart.csv"
-
 
 @pytest.fixture(scope="module")
 def sample_data():
@@ -27,7 +25,6 @@ def sample_data():
 
     return X_train, X_test, y_train, y_test
 
-
 # ------------------------------------------------------------
 # 1. Model produces valid predictions (shape + type + classes)
 # ------------------------------------------------------------
@@ -44,7 +41,6 @@ def test_model_predictions_valid(sample_data):
 
     # valid class labels
     assert set(np.unique(preds)).issubset({0, 1})
-
 
 # ------------------------------------------------------------
 # 2. Model meets minimum performance threshold
