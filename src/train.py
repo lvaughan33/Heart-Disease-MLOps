@@ -1,5 +1,4 @@
 import os
-os.environ["MLFLOW_ALLOW_FILE_STORE"] = "true"
 
 import mlflow
 import mlflow.sklearn
@@ -8,9 +7,26 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score
 
-# -----------------------------
+# -------------------------------------------------
+# MLflow safety config (CRITICAL FIX)
+# -------------------------------------------------
+def setup_mlflow():
+    """
+    Ensures MLflow uses a CI-safe filesystem path.
+    Prevents Windows-style paths like C:\ causing /C: errors in Linux CI.
+    """
+    if os.getenv("GITHUB_ACTIONS") == "true":
+        tracking_uri = "file:/tmp/mlruns"
+    else:
+        tracking_uri = "file:./mlruns"
+
+    mlflow.set_tracking_uri(tracking_uri)
+    mlflow.set_experiment("heart-disease-experiment")
+
+
+# -------------------------------------------------
 # Load data
-# -----------------------------
+# -------------------------------------------------
 def load_data():
     X_train = pd.read_csv("data/X_train.csv")
     X_test = pd.read_csv("data/X_test.csv")
@@ -18,20 +34,19 @@ def load_data():
     y_test = pd.read_csv("data/y_test.csv").values.ravel()
     return X_train, X_test, y_train, y_test
 
-# -----------------------------
-# Main training loop
-# -----------------------------
-def main():
 
-    mlflow.set_tracking_uri("file:./mlruns")
-    mlflow.set_experiment("heart-disease-experiment")
+# -------------------------------------------------
+# Main training loop
+# -------------------------------------------------
+def main():
+    setup_mlflow()
 
     X_train, X_test, y_train, y_test = load_data()
 
     n_estimators_list = [50, 100, 200, 300, 400]
     max_depth_list = [3, 5, 7, 10, None]
 
-    best_acc = 0.0   # 👈 ADD THIS
+    best_acc = 0.0
 
     for i in range(5):
 
@@ -53,7 +68,7 @@ def main():
             prec = precision_score(y_test, preds)
             rec = recall_score(y_test, preds)
 
-            best_acc = max(best_acc, acc)   # 👈 ADD THIS
+            best_acc = max(best_acc, acc)
 
             mlflow.log_param("model", "RandomForest")
             mlflow.log_param("n_estimators", n_estimators)
@@ -82,6 +97,7 @@ def main():
         )
 
     print("Model meets performance threshold ✅")
+
 
 if __name__ == "__main__":
     main()
