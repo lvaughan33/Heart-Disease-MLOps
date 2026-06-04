@@ -1,9 +1,11 @@
 import os
+os.environ["MLFLOW_ALLOW_FILE_STORE"] = "true"
 
 import yaml
 import mlflow
 import mlflow.sklearn
 import pandas as pd
+import yaml
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score
@@ -31,9 +33,9 @@ def load_config(path="configs/config.yaml"):
     with open(path, "r") as f:
         return yaml.safe_load(f)
 
-# -------------------------------------------------
+# -----------------------------
 # Load data
-# -------------------------------------------------
+# -----------------------------
 def load_data():
     X_train = pd.read_csv("data/X_train.csv")
     X_test = pd.read_csv("data/X_test.csv")
@@ -41,9 +43,9 @@ def load_data():
     y_test = pd.read_csv("data/y_test.csv").values.ravel()
     return X_train, X_test, y_train, y_test
 
-# -------------------------------------------------
+# -----------------------------
 # Main training loop
-# -------------------------------------------------
+# -----------------------------
 def main():
 
     config = load_config()
@@ -53,7 +55,6 @@ def main():
 
     n_estimators_list = config["model"]["n_estimators"]
     max_depth_list = config["model"]["max_depth"]
-
     MIN_ACCURACY = config["training"]["min_accuracy"]
 
     best_acc = 0.0
