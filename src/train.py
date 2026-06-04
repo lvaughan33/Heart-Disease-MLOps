@@ -1,5 +1,6 @@
 import os
 
+import yaml
 import mlflow
 import mlflow.sklearn
 import pandas as pd
@@ -10,7 +11,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score
 # -------------------------------------------------
 # MLflow safety config
 # -------------------------------------------------
-def setup_mlflow():
+def setup_mlflow(config):
     """
     Ensures MLflow uses a CI-safe filesystem path.
     Prevents Windows-style paths like C:\ causing /C: errors in Linux CI.
@@ -21,7 +22,14 @@ def setup_mlflow():
         tracking_uri = "file:./mlruns"
 
     mlflow.set_tracking_uri(tracking_uri)
-    mlflow.set_experiment("heart-disease-experiment")
+    mlflow.set_experiment(config["mlflow"]["experiment_name"])
+
+# -------------------------------------------------
+# Load config
+# -------------------------------------------------
+def load_config(path="configs/config.yaml"):
+    with open(path, "r") as f:
+        return yaml.safe_load(f)
 
 # -------------------------------------------------
 # Load data
@@ -37,16 +45,20 @@ def load_data():
 # Main training loop
 # -------------------------------------------------
 def main():
-    setup_mlflow()
+
+    config = load_config()
+    setup_mlflow(config)
 
     X_train, X_test, y_train, y_test = load_data()
 
-    n_estimators_list = [50, 100, 200, 300, 400]
-    max_depth_list = [3, 5, 7, 10, None]
+    n_estimators_list = config["model"]["n_estimators"]
+    max_depth_list = config["model"]["max_depth"]
+
+    MIN_ACCURACY = config["training"]["min_accuracy"]
 
     best_acc = 0.0
 
-    for i in range(5):
+    for i in range(len(n_estimators_list)):
 
         n_estimators = n_estimators_list[i]
         max_depth = max_depth_list[i]
@@ -56,7 +68,7 @@ def main():
             model = RandomForestClassifier(
                 n_estimators=n_estimators,
                 max_depth=max_depth,
-                random_state=42
+                random_state=config["training"]["random_state"]
             )
 
             model.fit(X_train, y_train)
@@ -83,8 +95,6 @@ def main():
     # -----------------------------
     # CI/CD gate
     # -----------------------------
-    MIN_ACCURACY = 0.80
-
     print("\n==============================")
     print(f"Best accuracy: {best_acc:.4f}")
     print("==============================")
@@ -95,6 +105,6 @@ def main():
         )
 
     print("Model meets performance threshold")
-
+    
 if __name__ == "__main__":
     main()
